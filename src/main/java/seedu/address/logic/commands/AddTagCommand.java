@@ -20,9 +20,9 @@ import seedu.address.model.tag.Tag;
 public class AddTagCommand extends Command {
 
     public static final String COMMAND_WORD = "addTag";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add the tag of the person identified "
-            + "by the index number used in the last person listing. "
-            + "New tag will be added by the input.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add the tag of the person identified, "
+            + "by the index number used in the last person listing.\n"
+            + "Tag name cannot be empty and should not contain space in between.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_ADDTAG + "[TAG]\n"
             + "Example: " + COMMAND_WORD + " 1 "
