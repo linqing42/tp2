@@ -178,7 +178,7 @@ To remove a tag from the existing tags without overwritten all the tags
 
 Format: `removeTag INDEX rt/TAG`
 
-* Add new tag at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Removes the named tag at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Tag to be removed should be entered after 'rt/' only.
 * Tag name cannot be empty and should not contain space in between.
 * Only one tag is allowed to be removed each time.
@@ -197,13 +197,13 @@ Format:
 `find [n/MORE_KEYWORDS] [d/DATE] [i/NRIC] [p/PHONE] [e/EMAIL] [a/ADDRESS] [de/DESCRIPTION] [r/REMARK] [t/TAG]…`
 
 
-* The search is case-insensitive. e.g. `n/hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `n\Hans` will match `Bo Hans`
+* The search is case-insensitive. e.g. `bernice` will match `Bernice`
+* The order of the keywords does not matter. e.g. `Yu` will match `Bernice Yu`
 * The search applies on all the fields.
 * The default find command is finding the name field: e.g. `find john`
-* Only find one filed at a time. Multiple find input is not supported. `find n\john`
+* Only find one field at a time. Multiple find input is not supported. `find n\john`
 
-Examples:
+Examples (Assuming none of the fields were changed):
 * `find n/alex bernice` returns `Alex Yeoh`, `Bernice Yu`<br>
 * `find d/-02-` returns `Bernice Yu`, `Charlotte Oliveiro`
 * `find f/7` returns `Alex Yeoh`, `Irfan Ibrahim`, `Roy Balakrishnan`
@@ -236,6 +236,8 @@ Clears all entries from the Police Address Book.
 
 Format: `clear`
 
+To restore the sample data, simply delete addressbook.json in the folder called data, which was created in the same directory.
+
 ### Sending email : `send`
 
 sending email to user.
@@ -246,13 +248,15 @@ Format:
         
 * The email format will be validated.
 * The index must be numeric and within the list size.
-* Any email address with empty space after e\ will treat as invalid email.
+* Any email address with empty space after e/ will treat as invalid email.
 * Any empty space between email format will be regarded as a MESSAGE.
+* When the input matches the email formate e/hello@kitty.com, it will treat as send the data to this email. The rest input will be discard.
 
 
 Examples:
 * `send 1 e/hellokitty@hotmail.com` sending the first data in the printed list to the user.
 * `send 1 I am not able to contact you, please call me` the message will send to the reporter's email address in the list number 1.
+* `send 1 hello e/hello@kitty.com world` the first data in the list will send to hello@kitty.com.
 
 ### Exiting the program : `exit`
 
